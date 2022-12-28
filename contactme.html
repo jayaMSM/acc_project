@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/contact.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Celebrations</title>
+    </head>
+<body>
+    <div class="navbar" id="overlay">
+        <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a> 
+        <a href="index1_bday.html"><i class="fa fa-fw fa-birthday-cake"></i> Birthdays</a> 
+        <a href="index2_anni.html"><i class="fa fa-fw fa-gift"></i> Anniversary</a> 
+        <a href="signup.html"><i class="fa fa-fw fa-user"></i>LogIn</a>
+        <a href="contactme.html"><i class="fa fa-fw fa-user"></i>Contact_Us</a>
+      </div>
+      
+        <form action="https://formspree.io/f/xgeqjzrq" method="POST" id="my-form">
+
+                <input type="text" name="name" placeholder="Name"> <br>
+                <input type="email" name="email" placeholder="Email"> <br>
+                <input type="text" name="subject" placeholder="Subject"> <br>
+                <textarea name="message" id="" cols="25" rows="5" placeholder="Message here"></textarea> <br>
+                <button type="button">Submit</button>
+        </form>
+
+ 
+ <script>
+      var form = document.getElementById("my-form");
+      async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("message-success");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission!";
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+ </script>
+ </body>
+
+</html>

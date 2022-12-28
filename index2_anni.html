@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index2.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Celebrations</title>
+    </head>
+    <body>
+        <video autoplay muted loop id="myVideo">
+            <source src="Flower - 107646.mp4" type="video/mp4">
+          </video>
+          <div id="overlay">
+            <h1>Happy <br> Anniversary</h1> 
+          </div>
+          
+          <div class="navbar" id="overlay">
+            <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a> 
+            <a href="#wishes"><i class="fa fa-fw fa-birthday-cake"></i> Wishes</a> 
+            <a href="#output"><i class="fa fa-fw fa-gift"></i> Picture</a> 
+            <a href="#message"><i class="fa fa-fw fa-user"></i> Personal Message</a>
+          <div class="row">
+            <div class="column">
+              <div class="card">
+                <textarea id="wishes" rows="13" cols="50" placeholder="Share your wishes......."></textarea>
+                <h6 id="wishes">Wishes</h6>
+              </div>
+            </div>
+          
+            <div class="column">
+              <div class="card">
+                <div class="container" >
+      <input type="file">
+      <img>
+                </div>
+               </div>
+            </div>
+            <div class="column">
+              <div class="card">
+                <textarea  id="message" rows="13" cols="50" placeholder="Share your message......."></textarea>
+                <h6 id="message">Message</h6>
+              </div>
+            </div>
+            <button type="button" onclick="myFunction()">Submit</button>
+            <p id="wish"></p><p id="pm"></p><img>
+    
+          </div>
+        </div>
+        </div>
+        <footer>
+            <div>
+                <audio src="the-weekend-117427.mp3" autoplay></audio>
+              </div>
+        </footer> 
+    <script>
+          var Element = document.querySelector('input');
+          var img = document.querySelector('img');
+          Element.addEventListener('change', function() {
+          var url = URL.createObjectURL(Element.files[0]);
+          img.src = url;
+          console.log(url);
+    });
+        function myFunction() {
+          var x = document.getElementById("wishes").value;
+          document.getElementById("wish").innerHTML = x;
+          var y = document.getElementById("message").value;
+          document.getElementById("pm").innerHTML = y;
+          
+          
+        };
+      </script>
+      </body>
+    
+    </html>
+    
+    
+    
